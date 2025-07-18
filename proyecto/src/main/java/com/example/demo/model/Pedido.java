@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -17,12 +18,12 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @Column(nullable = false)
-    private Estados estado;
-    @ManyToMany
-    private List<Producto> productos;
+    private boolean estado;
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Carrito> productosCarrito = new ArrayList<>();
 
     private Double total;
+
     private Long usuarioId;
 
 }

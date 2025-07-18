@@ -19,11 +19,12 @@ public class Carrito {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @OneToMany
-    private List<Producto> productos = new ArrayList<>();
+    @ManyToOne
+    private Pedido pedido;
 
-    private Double total;
+    @ManyToOne
+    private Producto producto;
 
-    private Estados estado;
+    private Integer cantidad;
 
 }

@@ -10,11 +10,14 @@ import java.util.List;
 @Service
 public class ProductoService {
 
-    @Autowired
-    private ProductoRepository productoRepository;
+    private final ProductoRepository productoRepository;
 
     public ProductoService(ProductoRepository productoRepository) {
         this.productoRepository = productoRepository;
+    }
+
+    public Producto crearProducto(Producto producto) {
+        return productoRepository.save(producto);
     }
 
     public String actualizarProducto(Long id, Producto producto) {
